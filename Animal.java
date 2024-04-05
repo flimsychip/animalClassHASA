@@ -1,13 +1,17 @@
 package hasa;
 
 public class Animal {
+    private static int numAnimals = 0;
     private String name;
     private int speed;
     private Food food;
+    /*"predator" is a stand-in for anything that uses this animal as a food source.
+    the food chain loops back around and the animal at the top is used as a food source by microorganisms.*/
     private Predator predator;
     private Habitat habitat;
 
     public Animal() {
+        Animal.numAnimals++;
     }
 
     public Animal(String name, int speed, Food food, Predator pred, Habitat hab) {
@@ -16,6 +20,15 @@ public class Animal {
         this.food = food;
         this.predator = pred;
         this.habitat = hab;
+        Animal.numAnimals++;
+    }
+
+    public static int getNumAnimals() {
+        return Animal.numAnimals;
+    }
+
+    public static void setNumAnimals(int num) {
+        Animal.numAnimals = num;
     }
 
     public String getName() {
